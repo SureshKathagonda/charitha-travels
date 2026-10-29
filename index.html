@@ -71,7 +71,6 @@
     .pricing { background:var(--pale); }
     .fare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
     .fare-card { background:white; border:1px solid var(--line); border-radius:23px; padding:24px; box-shadow:0 7px 22px rgba(5,65,39,.04); display:flex; flex-direction:column; }
-    .fare-card.featured { border:2px solid var(--green-2); box-shadow:var(--shadow); transform:translateY(-5px); }
     .fare-km { color:var(--green); font-size:1.95rem; font-weight:900; letter-spacing:-.05em; }
     .fare-sub { color:var(--muted); font-size:.9rem; margin-top:-2px; }
     .fare-price { margin:20px 0 5px; font-size:2.15rem; line-height:1.1; font-weight:950; letter-spacing:-.05em; color:var(--green-dark); }
@@ -117,7 +116,6 @@
     .whatsapp-float:hover { transform:translateY(-3px) scale(1.04); box-shadow:0 12px 30px rgba(0,0,0,.26); }
     .fare-card, .service, .contact-panel, .form-panel { transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
     .fare-card:hover, .service:hover { transform:translateY(-5px); box-shadow:var(--shadow); border-color:#8ab99a; }
-    .fare-card.featured:hover { transform:translateY(-8px); }
     .reveal { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
     .reveal.is-visible { opacity:1; transform:translateY(0); }
     .map-section { background:var(--pale); }
@@ -155,7 +153,6 @@
       .visual-badge { bottom:10px; max-width:220px; padding:12px 15px; }
       .section { padding:58px 0; }
       .fare-grid,.services-grid { grid-template-columns:1fr; }
-      .fare-card.featured { transform:none; }
       .about-list,.form-grid { grid-template-columns:1fr; }
       .form-panel,.contact-panel { padding:22px; }
       .whatsapp-float { width:52px; height:52px; right:14px; bottom:14px; }
@@ -222,18 +219,18 @@
           </article>
           <article class="fare-card reveal">
             <div class="fare-km">200 km</div><div class="fare-sub">Round trip</div>
-            <div class="fare-price">₹3,000</div><div class="fare-market">Indicative fare from the poster</div>
+            <div class="fare-price">₹4,000</div><div class="fare-market">Indicative fare from the poster</div>
             <a class="btn btn-outline fare-enquire" data-fare="200 km round trip — ₹4,000" href="#contact">Enquire about this fare</a>
           </article>
           <article class="fare-card reveal">
             <div class="fare-km">300 km</div><div class="fare-sub">Round trip</div>
-            <div class="fare-price">₹4,000</div><div class="fare-market">Indicative fare from the poster</div>
+            <div class="fare-price">₹3,000*</div><div class="fare-market">Indicative fare from the poster</div>
             <a class="btn btn-outline fare-enquire" data-fare="300 km round trip — please confirm fare" href="#contact">Confirm this fare</a>
           </article>
-          <article class="fare-card featured reveal">
+          <article class="fare-card reveal">
             <div class="fare-km">400 km</div><div class="fare-sub">Round trip</div>
             <div class="fare-price">₹6,500</div><div class="fare-market">Indicative fare from the poster</div>
-            <a class="btn btn-primary fare-enquire" data-fare="400 km round trip — ₹6,500" href="#contact">Enquire about this fare</a>
+            <a class="btn btn-outline fare-enquire" data-fare="400 km round trip — ₹6,500" href="#contact">Enquire about this fare</a>
           </article>
           <article class="fare-card reveal">
             <div class="fare-km">500 km</div><div class="fare-sub">Round trip</div>
@@ -317,7 +314,11 @@
               <div class="field"><label for="destination">Destination</label><input id="destination" name="destination" placeholder="Where are you going?" required></div>
               <div class="field"><label for="date">Travel date</label><input id="date" name="date" type="date" required></div>
               <div class="field"><label for="trip">Trip type</label><select id="trip" name="trip"><option>Round trip</option><option>One way</option><option>Local travel</option><option>Outstation</option></select></div>
-              <div class="field full"><label for="fare">Fare / distance (optional)</label><input id="fare" name="fare" placeholder="e.g. 400 km round trip"></div>
+              <div class="field full">
+                <label for="fare">Fare / distance (optional)</label>
+                <input id="fare" name="fare" placeholder="Choose a fare above or enter your preference">
+                <button type="button" class="btn btn-outline" id="clearFare" style="margin-top:10px">Clear fare selection</button>
+              </div>
               <div class="field full"><label for="notes">Additional details (optional)</label><textarea id="notes" name="notes" placeholder="Passengers, pickup time, return date, luggage, etc."></textarea></div>
               <div class="field full"><button class="btn btn-primary" type="submit">Send enquiry on WhatsApp ↗</button></div>
             </div>
@@ -343,12 +344,18 @@
       revealItems.forEach(item => revealObserver.observe(item));
     } else { revealItems.forEach(item => item.classList.add('is-visible')); }
 
+    // No fare is selected by default. A fare is filled only when the visitor clicks a fare card.
     document.querySelectorAll('.fare-enquire').forEach(link => {
       link.addEventListener('click', () => {
         const fare = link.dataset.fare || '';
         const fareInput = document.getElementById('fare');
         if (fareInput) fareInput.value = fare;
       });
+    });
+
+    // Let visitors clear a fare they previously selected.
+    document.getElementById('clearFare').addEventListener('click', () => {
+      document.getElementById('fare').value = '';
     });
 
     document.getElementById('bookingForm').addEventListener('submit', function(event) {

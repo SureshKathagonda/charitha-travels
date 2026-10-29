@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#075b35">
-  <meta name="description" content="Charitha Travels, Hyderabad — safe rides, comfortable journeys, and memorable trips. Contact us for round-trip car fares and travel enquiries.">
-  <title>Charitha Travels | Hyderabad</title>
+  <meta name="description" content="Book comfortable local and outstation rides with Charitha Travels in Hyderabad. Explore indicative round-trip fares and send your trip enquiry on WhatsApp.">
+  <meta property="og:title" content="Charitha Travels | Hyderabad">
+  <meta property="og:description" content="Your journey, our priority. Enquire about local and outstation travel from Hyderabad.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://sureshkathagonda.github.io/charitha-travels/">
+  <title>Charitha Travels | Hyderabad Car Travel &amp; Outstation Trips</title>
   <style>
     :root {
       --green: #075b35;
@@ -110,7 +114,21 @@
     .footer-brand { font-weight:900; font-size:1.1rem; color:white; }
     .footer-small { font-size:.88rem; }
     .whatsapp-float { position:fixed; right:20px; bottom:20px; z-index:20; width:58px; height:58px; display:grid; place-items:center; border-radius:50%; background:#1fae62; color:white; box-shadow:0 8px 25px rgba(0,0,0,.22); font-size:1.65rem; }
-    .whatsapp-float:hover { transform:translateY(-3px); }
+    .whatsapp-float:hover { transform:translateY(-3px) scale(1.04); box-shadow:0 12px 30px rgba(0,0,0,.26); }
+    .fare-card, .service, .contact-panel, .form-panel { transition:transform .24s ease, box-shadow .24s ease, border-color .24s ease; }
+    .fare-card:hover, .service:hover { transform:translateY(-5px); box-shadow:var(--shadow); border-color:#8ab99a; }
+    .fare-card.featured:hover { transform:translateY(-8px); }
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal.is-visible { opacity:1; transform:translateY(0); }
+    .map-section { background:var(--pale); }
+    .map-card { display:grid; grid-template-columns:.8fr 1.2fr; gap:24px; align-items:stretch; background:#fff; border:1px solid var(--line); border-radius:26px; padding:18px; box-shadow:var(--shadow); }
+    .map-copy { padding:20px; }
+    .map-copy h3 { color:var(--green-dark); font-size:1.55rem; margin:0 0 10px; }
+    .map-copy p { color:var(--muted); }
+    .map-frame { width:100%; min-height:320px; border:0; border-radius:18px; background:#e7efe6; }
+    .fare-terms { color:var(--muted); font-size:.88rem; text-align:center; max-width:900px; margin:18px auto 0; }
+    @media (max-width: 850px) { .map-card { grid-template-columns:1fr; } .map-frame { min-height:280px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important; } .reveal { opacity:1; transform:none; } }
     @media (max-width: 850px) {
       .nav-links { gap:14px; }
       .nav-links a:not(.btn) { display:none; }
@@ -160,6 +178,7 @@
       <div class="nav-links">
         <a href="#fares">Trip Fares</a>
         <a href="#services">Why Us</a>
+        <a href="#locations">Service Area</a>
         <a href="#contact">Contact</a>
         <a class="btn btn-primary" href="#contact">Book a Ride ↗</a>
       </div>
@@ -196,38 +215,38 @@
           <p>Round-trip fare estimates from our current poster. Share your route and dates with us to confirm the final price.</p>
         </div>
         <div class="fare-grid">
-          <article class="fare-card">
+          <article class="fare-card reveal">
             <div class="fare-km">100 km</div><div class="fare-sub">Round trip</div>
-            <div class="fare-price">₹1,500–₹2,000</div><div class="fare-market">Poster reference: market price ₹3,000</div>
+            <div class="fare-price">₹1,500–₹2,000</div><div class="fare-market">Indicative fare from the poster</div>
             <a class="btn btn-outline fare-enquire" data-fare="100 km round trip — ₹1,500 to ₹2,000" href="#contact">Enquire about this fare</a>
           </article>
-          <article class="fare-card">
+          <article class="fare-card reveal">
             <div class="fare-km">200 km</div><div class="fare-sub">Round trip</div>
-            <div class="fare-price">₹3,000</div><div class="fare-market">Poster reference: ₹6,000 market price</div>
+            <div class="fare-price">₹3,000</div><div class="fare-market">Indicative fare from the poster</div>
             <a class="btn btn-outline fare-enquire" data-fare="200 km round trip — ₹4,000" href="#contact">Enquire about this fare</a>
           </article>
-          <article class="fare-card">
+          <article class="fare-card reveal">
             <div class="fare-km">300 km</div><div class="fare-sub">Round trip</div>
-            <div class="fare-price">₹4,000*</div><div class="fare-market">Poster lists 300 km and 200 km together</div>
+            <div class="fare-price">₹4,000*</div><div class="fare-market">Indicative fare from the poster</div>
             <a class="btn btn-outline fare-enquire" data-fare="300 km round trip — please confirm fare" href="#contact">Confirm this fare</a>
           </article>
-          <article class="fare-card featured">
+          <article class="fare-card featured reveal">
             <div class="fare-km">400 km</div><div class="fare-sub">Round trip</div>
-            <div class="fare-price">₹6,500</div><div class="fare-market">Poster reference: market price ₹8,000</div>
+            <div class="fare-price">₹6,500</div><div class="fare-market">Indicative fare from the poster</div>
             <a class="btn btn-primary fare-enquire" data-fare="400 km round trip — ₹6,500" href="#contact">Enquire about this fare</a>
           </article>
-          <article class="fare-card">
+          <article class="fare-card reveal">
             <div class="fare-km">500 km</div><div class="fare-sub">Round trip</div>
-            <div class="fare-price">₹8,800</div><div class="fare-market">Poster reference: ₹10,000–₹11,000 market price</div>
+            <div class="fare-price">₹8,800</div><div class="fare-market">Indicative fare from the poster</div>
             <a class="btn btn-outline fare-enquire" data-fare="500 km round trip — ₹8,800" href="#contact">Enquire about this fare</a>
           </article>
-          <article class="fare-card">
+          <article class="fare-card reveal">
             <div class="fare-km">600 km</div><div class="fare-sub">Round trip</div>
-            <div class="fare-price">₹9,800</div><div class="fare-market">Poster reference: ₹11,000–₹12,000 market price</div>
+            <div class="fare-price">₹9,800</div><div class="fare-market">Indicative fare from the poster</div>
             <a class="btn btn-outline fare-enquire" data-fare="600 km round trip — ₹9,800" href="#contact">Enquire about this fare</a>
           </article>
         </div>
-        <div class="price-note"><strong>Trips above 600 km?</strong> Contact us to discuss a custom fare. Prices are indicative, negotiable, and subject to route, vehicle, travel date, and trip requirements. Please confirm the 200/300 km fare with us.</div>
+        <div class="price-note"><strong>Trips above 600 km?</strong> Contact us for a custom quote. The fares below are copied from the supplied poster and are indicative; confirm the final fare before booking.</div><p class="fare-terms">Please confirm what each fare includes before travel, including tolls, parking, driver allowance, night charges, waiting time, extra kilometres and any additional trip requirements.</p>
       </div>
     </section>
 
@@ -239,10 +258,10 @@
           <p>We want your journey to feel comfortable from pickup to drop-off.</p>
         </div>
         <div class="services-grid">
-          <article class="service"><div class="service-icon">🛡️</div><h3>Safe &amp; reliable</h3><p>Plan your trip with a focus on a safe, dependable ride.</p></article>
-          <article class="service"><div class="service-icon">🚘</div><h3>Comfortable rides</h3><p>Ask us about vehicle options suited to your group and luggage.</p></article>
-          <article class="service"><div class="service-icon">🧑‍✈️</div><h3>Experienced drivers</h3><p>Coordinate pickup details and route plans with our team.</p></article>
-          <article class="service"><div class="service-icon">⏱️</div><h3>Planned pickups</h3><p>Share your pickup time and destination ahead of the trip.</p></article>
+          <article class="service reveal"><div class="service-icon">🛡️</div><h3>Safe &amp; reliable</h3><p>Plan your trip with a focus on a safe, dependable ride.</p></article>
+          <article class="service reveal"><div class="service-icon">🚘</div><h3>Comfortable rides</h3><p>Ask us about vehicle options suited to your group and luggage.</p></article>
+          <article class="service reveal"><div class="service-icon">🧑‍✈️</div><h3>Experienced drivers</h3><p>Coordinate pickup details and route plans with our team.</p></article>
+          <article class="service reveal"><div class="service-icon">⏱️</div><h3>Planned pickups</h3><p>Share your pickup time and destination ahead of the trip.</p></article>
         </div>
       </div>
     </section>
@@ -259,6 +278,17 @@
           </div>
         </div>
         <div class="about-art"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85" alt="Beautiful destination landscape for a road trip"></div>
+      </div>
+    </section>
+
+
+    <section class="section map-section" id="locations">
+      <div class="container">
+        <div class="section-heading"><span class="eyebrow">Our service area</span><h2>Starting from Hyderabad.</h2><p>Enquire about pickups across Hyderabad and journeys to destinations throughout Telangana and beyond.</p></div>
+        <div class="map-card reveal">
+          <div class="map-copy"><h3>Hyderabad, Telangana</h3><p>Tell us your pickup point, destination, travel date and return plan. We'll confirm availability and share a trip quote.</p><p><strong>Service:</strong> Hyderabad local travel and outstation enquiries.</p><a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&amp;query=Hyderabad%2C%20Telangana" target="_blank" rel="noopener">Open Hyderabad in Google Maps ↗</a><p class="fare-terms" style="text-align:left">This map shows Hyderabad city, not a verified office or pickup address.</p></div>
+          <iframe class="map-frame" title="Map showing Hyderabad, Telangana" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Hyderabad%2C%20Telangana&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+        </div>
       </div>
     </section>
 
@@ -305,6 +335,13 @@
   <a class="whatsapp-float" href="https://wa.me/919704265640?text=Hi%20Charitha%20Travels%2C%20I%20would%20like%20to%20enquire%20about%20a%20trip." target="_blank" rel="noopener" aria-label="Chat with Charitha Travels on WhatsApp">☏</a>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => revealObserver.observe(item));
+    } else { revealItems.forEach(item => item.classList.add('is-visible')); }
 
     document.querySelectorAll('.fare-enquire').forEach(link => {
       link.addEventListener('click', () => {

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#075b35">
+  <meta name="description" content="Charitha Travels, Hyderabad — safe rides, comfortable journeys, and memorable trips. Contact us for round-trip car fares and travel enquiries.">
+  <title>Charitha Travels | Hyderabad</title>
+  <style>
+    :root {
+      --green: #075b35;
+      --green-2: #0c7544;
+      --green-dark: #063c28;
+      --cream: #fffdf2;
+      --pale: #f5f8ec;
+      --yellow: #ffdf42;
+      --ink: #142c2a;
+      --muted: #5b6c64;
+      --line: #c8ddc9;
+      --shadow: 0 18px 48px rgba(5, 65, 39, .12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--ink); background: var(--cream);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1140px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar { background: var(--green-dark); color: #fff; font-size: .9rem; }
+    .topbar .container { display:flex; justify-content:space-between; gap:16px; padding:9px 0; flex-wrap:wrap; }
+    .topbar a { color: #fff; font-weight: 700; }
+    header { position: sticky; top:0; z-index:10; background:rgba(255,253,242,.94); backdrop-filter: blur(14px); border-bottom:1px solid rgba(7,91,53,.12); }
+    .nav { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:10px; color:var(--green); }
+    .brand-mark { display:grid; place-items:center; width:45px; height:45px; border-radius:14px; background:var(--green); color:white; font-size:1.45rem; }
+    .brand-name { font-weight:900; font-size:1.32rem; line-height:1.05; letter-spacing:-.04em; }
+    .brand-name small { display:block; font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; margin-top:5px; }
+    .nav-links { display:flex; align-items:center; gap:25px; font-weight:700; font-size:.94rem; }
+    .nav-links a:hover { color:var(--green-2); }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:13px 19px; border-radius:999px; border:0; cursor:pointer; font:inherit; font-weight:800; transition:transform .2s, box-shadow .2s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { color:white; background:var(--green); box-shadow:0 8px 20px rgba(7,91,53,.2); }
+    .btn-yellow { background:var(--yellow); color:var(--green-dark); }
+    .btn-outline { border:1.5px solid var(--line); color:var(--green); background:white; }
+    .hero { position:relative; overflow:hidden; padding:74px 0 64px; background:linear-gradient(120deg,#f7faec 0%,#fffdf2 52%,#e3f2e6 100%); }
+    .hero:before { content:""; position:absolute; width:490px; height:490px; border-radius:50%; background:rgba(255,223,66,.17); right:-130px; top:-190px; }
+    .hero-grid { position:relative; display:grid; grid-template-columns:1.02fr .98fr; gap:48px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--green); background:#e4f1df; padding:7px 12px; border-radius:999px; font-size:.83rem; font-weight:850; }
+    h1 { margin:20px 0 18px; color:var(--green-dark); font-size:clamp(2.8rem,5.5vw,5.25rem); line-height:.99; letter-spacing:-.065em; }
+    h1 span { color:var(--green-2); }
+    .hero-copy { color:var(--muted); max-width:560px; font-size:1.13rem; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:27px; }
+    .trust-row { display:flex; flex-wrap:wrap; gap:18px; margin-top:30px; color:#355447; font-size:.9rem; font-weight:700; }
+    .trust-row span { display:flex; align-items:center; gap:7px; }
+    .hero-visual { min-height:390px; position:relative; display:grid; place-items:center; }
+    .scenic { width:100%; height:410px; object-fit:cover; border-radius:32px; box-shadow:var(--shadow); }
+    .visual-badge { position:absolute; bottom:22px; left:-20px; max-width:250px; background:white; padding:17px 20px; border-radius:20px; box-shadow:var(--shadow); }
+    .visual-badge strong { display:block; color:var(--green); font-size:1.15rem; }
+    .visual-badge small { color:var(--muted); }
+    .section { padding:78px 0; }
+    .section-heading { text-align:center; max-width:690px; margin:0 auto 38px; }
+    .section-heading .eyebrow { margin-bottom:12px; }
+    h2 { color:var(--green-dark); font-size:clamp(2rem,4vw,3.2rem); line-height:1.08; letter-spacing:-.045em; margin:8px 0 13px; }
+    .section-heading p { color:var(--muted); margin:0; }
+    .pricing { background:var(--pale); }
+    .fare-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .fare-card { background:white; border:1px solid var(--line); border-radius:23px; padding:24px; box-shadow:0 7px 22px rgba(5,65,39,.04); display:flex; flex-direction:column; }
+    .fare-card.featured { border:2px solid var(--green-2); box-shadow:var(--shadow); transform:translateY(-5px); }
+    .fare-km { color:var(--green); font-size:1.95rem; font-weight:900; letter-spacing:-.05em; }
+    .fare-sub { color:var(--muted); font-size:.9rem; margin-top:-2px; }
+    .fare-price { margin:20px 0 5px; font-size:2.15rem; line-height:1.1; font-weight:950; letter-spacing:-.05em; color:var(--green-dark); }
+    .fare-market { color:#77847c; font-size:.9rem; }
+    .fare-card .btn { width:100%; margin-top:22px; }
+    .price-note { margin:24px auto 0; max-width:820px; background:#fff0b4; border-radius:18px; padding:17px 22px; text-align:center; color:#493d0a; }
+    .price-note strong { display:block; color:var(--green-dark); }
+    .services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .service { padding:24px 20px; border:1px solid var(--line); border-radius:22px; background:#fff; }
+    .service-icon { display:grid; place-items:center; width:48px; height:48px; border-radius:15px; background:#e6f2e4; font-size:1.45rem; margin-bottom:17px; }
+    .service h3 { color:var(--green-dark); margin:0 0 7px; font-size:1.05rem; }
+    .service p { color:var(--muted); font-size:.92rem; margin:0; }
+    .about { background:var(--green-dark); color:white; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:50px; }
+    .about h2 { color:white; }
+    .about p { color:#d3e6d8; }
+    .about-list { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:25px; }
+    .about-list div { padding:14px; border:1px solid rgba(255,255,255,.17); border-radius:15px; font-weight:750; }
+    .about-art { border-radius:28px; overflow:hidden; min-height:320px; }
+    .about-art img { width:100%; height:100%; min-height:320px; object-fit:cover; display:block; }
+    .contact { background:#fffdf2; }
+    .contact-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:30px; align-items:start; }
+    .contact-panel { background:var(--green); color:white; border-radius:26px; padding:30px; }
+    .contact-panel h3 { margin:0 0 10px; font-size:1.65rem; }
+    .contact-panel p { color:#d6eadc; }
+    .contact-line { display:flex; align-items:center; gap:12px; padding:14px 0; border-top:1px solid rgba(255,255,255,.18); font-weight:750; }
+    .contact-line span:first-child { font-size:1.35rem; }
+    .form-panel { padding:30px; border:1px solid var(--line); border-radius:26px; background:white; }
+    .form-panel h3 { margin:0 0 20px; color:var(--green-dark); font-size:1.45rem; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    label { display:block; font-size:.88rem; font-weight:800; margin-bottom:6px; color:#344e42; }
+    input, select, textarea { width:100%; border:1px solid #cbd9ce; border-radius:12px; padding:13px 14px; font:inherit; color:var(--ink); background:#fff; outline:none; }
+    input:focus, select:focus, textarea:focus { border-color:var(--green-2); box-shadow:0 0 0 3px rgba(12,117,68,.12); }
+    .field { margin-bottom:15px; }
+    .full { grid-column:1/-1; }
+    textarea { min-height:95px; resize:vertical; }
+    .form-panel button { width:100%; }
+    footer { background:#042d1e; color:#d7e8dc; padding:28px 0; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .footer-brand { font-weight:900; font-size:1.1rem; color:white; }
+    .footer-small { font-size:.88rem; }
+    .whatsapp-float { position:fixed; right:20px; bottom:20px; z-index:20; width:58px; height:58px; display:grid; place-items:center; border-radius:50%; background:#1fae62; color:white; box-shadow:0 8px 25px rgba(0,0,0,.22); font-size:1.65rem; }
+    .whatsapp-float:hover { transform:translateY(-3px); }
+    @media (max-width: 850px) {
+      .nav-links { gap:14px; }
+      .nav-links a:not(.btn) { display:none; }
+      .hero-grid,.about-grid,.contact-grid { grid-template-columns:1fr; }
+      .hero { padding-top:48px; }
+      .hero-visual { min-height:300px; }
+      .scenic { height:330px; }
+      .visual-badge { left:12px; }
+      .fare-grid { grid-template-columns:repeat(2,1fr); }
+      .services-grid { grid-template-columns:repeat(2,1fr); }
+      .about-grid { gap:28px; }
+    }
+    @media (max-width: 540px) {
+      .container { width:min(100% - 28px, 1140px); }
+      .topbar .container { justify-content:center; text-align:center; }
+      .nav { min-height:68px; }
+      .brand-name { font-size:1.12rem; }
+      .nav-links .btn { padding:10px 13px; font-size:.85rem; }
+      .hero { padding:40px 0 48px; }
+      h1 { font-size:3.1rem; }
+      .hero-copy { font-size:1rem; }
+      .hero-visual { min-height:250px; }
+      .scenic { height:270px; border-radius:22px; }
+      .visual-badge { bottom:10px; max-width:220px; padding:12px 15px; }
+      .section { padding:58px 0; }
+      .fare-grid,.services-grid { grid-template-columns:1fr; }
+      .fare-card.featured { transform:none; }
+      .about-list,.form-grid { grid-template-columns:1fr; }
+      .form-panel,.contact-panel { padding:22px; }
+      .whatsapp-float { width:52px; height:52px; right:14px; bottom:14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <span>📍 Serving Hyderabad and outstation trips</span>
+      <span>Call us: <a href="tel:+919704265640">+91 97042 65640</a> · <a href="tel:+918341315634">83413 15634</a></span>
+    </div>
+  </div>
+  <header>
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Charitha Travels home">
+        <span class="brand-mark">↗</span>
+        <span class="brand-name">Charitha Travels<small>Hyderabad · Travel with care</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#fares">Trip Fares</a>
+        <a href="#services">Why Us</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="#contact">Book a Ride ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">✦ Safe rides. Comfortable journeys.</span>
+          <h1>Your journey.<br><span>Our priority.</span></h1>
+          <p class="hero-copy">Planning a family trip, a weekend getaway, or an outstation journey from Hyderabad? Travel comfortably with Charitha Travels and enquire about a fare that fits your trip.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/919704265640?text=Hi%20Charitha%20Travels%2C%20I%20would%20like%20to%20enquire%20about%20a%20trip." target="_blank" rel="noopener">☏ WhatsApp to Book</a>
+            <a class="btn btn-outline" href="#fares">View Trip Fares ↓</a>
+          </div>
+          <div class="trust-row">
+            <span>✓ Safe &amp; reliable</span><span>✓ Well-maintained vehicles</span><span>✓ Experienced drivers</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img class="scenic" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85" alt="Scenic mountain landscape for a memorable road trip">
+          <div class="visual-badge"><strong>Travel more, worry less.</strong><small>Tell us your destination and travel plans.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing" id="fares">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Simple fare guide</span>
+          <h2>More miles. Better value.</h2>
+          <p>Round-trip fare estimates from our current poster. Share your route and dates with us to confirm the final price.</p>
+        </div>
+        <div class="fare-grid">
+          <article class="fare-card">
+            <div class="fare-km">100 km</div><div class="fare-sub">Round trip</div>
+            <div class="fare-price">₹1,500–₹2,000</div><div class="fare-market">Poster reference: market price ₹3,000</div>
+            <a class="btn btn-outline fare-enquire" data-fare="100 km round trip — ₹1,500 to ₹2,000" href="#contact">Enquire about this fare</a>
+          </article>
+          <article class="fare-card">
+            <div class="fare-km">200 km</div><div class="fare-sub">Round trip</div>
+            <div class="fare-price">₹4,000</div><div class="fare-market">Poster reference: ₹6,000 market price</div>
+            <a class="btn btn-outline fare-enquire" data-fare="200 km round trip — ₹4,000" href="#contact">Enquire about this fare</a>
+          </article>
+          <article class="fare-card">
+            <div class="fare-km">300 km</div><div class="fare-sub">Round trip</div>
+            <div class="fare-price">₹3,000*</div><div class="fare-market">Poster lists 300 km and 200 km together</div>
+            <a class="btn btn-outline fare-enquire" data-fare="300 km round trip — please confirm fare" href="#contact">Confirm this fare</a>
+          </article>
+          <article class="fare-card featured">
+            <div class="fare-km">400 km</div><div class="fare-sub">Round trip</div>
+            <div class="fare-price">₹6,500</div><div class="fare-market">Poster reference: market price ₹8,000</div>
+            <a class="btn btn-primary fare-enquire" data-fare="400 km round trip — ₹6,500" href="#contact">Enquire about this fare</a>
+          </article>
+          <article class="fare-card">
+            <div class="fare-km">500 km</div><div class="fare-sub">Round trip</div>
+            <div class="fare-price">₹8,800</div><div class="fare-market">Poster reference: ₹10,000–₹11,000 market price</div>
+            <a class="btn btn-outline fare-enquire" data-fare="500 km round trip — ₹8,800" href="#contact">Enquire about this fare</a>
+          </article>
+          <article class="fare-card">
+            <div class="fare-km">600 km</div><div class="fare-sub">Round trip</div>
+            <div class="fare-price">₹9,800</div><div class="fare-market">Poster reference: ₹11,000–₹12,000 market price</div>
+            <a class="btn btn-outline fare-enquire" data-fare="600 km round trip — ₹9,800" href="#contact">Enquire about this fare</a>
+          </article>
+        </div>
+        <div class="price-note"><strong>Trips above 600 km?</strong> Contact us to discuss a custom fare. Prices are indicative, negotiable, and subject to route, vehicle, travel date, and trip requirements. Please confirm the 200/300 km fare with us.</div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Travel with confidence</span>
+          <h2>Every trip, made easier.</h2>
+          <p>We want your journey to feel comfortable from pickup to drop-off.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service"><div class="service-icon">🛡️</div><h3>Safe &amp; reliable</h3><p>Plan your trip with a focus on a safe, dependable ride.</p></article>
+          <article class="service"><div class="service-icon">🚘</div><h3>Comfortable rides</h3><p>Ask us about vehicle options suited to your group and luggage.</p></article>
+          <article class="service"><div class="service-icon">🧑‍✈️</div><h3>Experienced drivers</h3><p>Coordinate pickup details and route plans with our team.</p></article>
+          <article class="service"><div class="service-icon">⏱️</div><h3>Planned pickups</h3><p>Share your pickup time and destination ahead of the trip.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about">
+      <div class="container about-grid">
+        <div>
+          <span class="eyebrow">Your travel partner in Hyderabad</span>
+          <h2>Good journeys start with a simple plan.</h2>
+          <p>From short round trips to longer outstation journeys, Charitha Travels helps you plan the ride around your destination, dates, and budget. Get in touch for availability and a personalised quote.</p>
+          <div class="about-list">
+            <div>✓ Clear fare discussion</div><div>✓ Outstation enquiries</div>
+            <div>✓ Flexible trip planning</div><div>✓ Direct phone support</div>
+          </div>
+        </div>
+        <div class="about-art"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85" alt="Beautiful destination landscape for a road trip"></div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Let's plan your ride</span>
+          <h2>Where would you like to go?</h2>
+          <p>Send your trip details and we'll open WhatsApp with your enquiry ready to send.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-panel">
+            <h3>Contact Charitha Travels</h3>
+            <p>For availability, custom fares, and trips above 600 km, contact us directly.</p>
+            <a class="contact-line" href="tel:+919704265640"><span>📞</span><span>+91 97042 65640</span></a>
+            <a class="contact-line" href="tel:+918341315634"><span>📞</span><span>83413 15634</span></a>
+            <a class="contact-line" href="https://wa.me/919704265640" target="_blank" rel="noopener"><span>💬</span><span>Chat on WhatsApp</span></a>
+            <div class="contact-line"><span>📍</span><span>Hyderabad, Telangana</span></div>
+          </div>
+          <form class="form-panel" id="bookingForm">
+            <h3>Trip enquiry</h3>
+            <div class="form-grid">
+              <div class="field"><label for="name">Your name</label><input id="name" name="name" placeholder="Enter your name" required></div>
+              <div class="field"><label for="phone">Your phone number</label><input id="phone" name="phone" type="tel" placeholder="Phone number" required></div>
+              <div class="field"><label for="pickup">Pickup location</label><input id="pickup" name="pickup" placeholder="e.g. Hyderabad" required></div>
+              <div class="field"><label for="destination">Destination</label><input id="destination" name="destination" placeholder="Where are you going?" required></div>
+              <div class="field"><label for="date">Travel date</label><input id="date" name="date" type="date" required></div>
+              <div class="field"><label for="trip">Trip type</label><select id="trip" name="trip"><option>Round trip</option><option>One way</option><option>Local travel</option><option>Outstation</option></select></div>
+              <div class="field full"><label for="fare">Fare / distance (optional)</label><input id="fare" name="fare" placeholder="e.g. 400 km round trip"></div>
+              <div class="field full"><label for="notes">Additional details (optional)</label><textarea id="notes" name="notes" placeholder="Passengers, pickup time, return date, luggage, etc."></textarea></div>
+              <div class="field full"><button class="btn btn-primary" type="submit">Send enquiry on WhatsApp ↗</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-inner">
+      <div><div class="footer-brand">Charitha Travels</div><div class="footer-small">Your Journey · Our Priority</div></div>
+      <div class="footer-small">© <span id="year"></span> Charitha Travels · Hyderabad, Telangana</div>
+    </div>
+  </footer>
+  <a class="whatsapp-float" href="https://wa.me/919704265640?text=Hi%20Charitha%20Travels%2C%20I%20would%20like%20to%20enquire%20about%20a%20trip." target="_blank" rel="noopener" aria-label="Chat with Charitha Travels on WhatsApp">☏</a>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('.fare-enquire').forEach(link => {
+      link.addEventListener('click', () => {
+        const fare = link.dataset.fare || '';
+        const fareInput = document.getElementById('fare');
+        if (fareInput) fareInput.value = fare;
+      });
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const data = new FormData(this);
+      const message = [
+        'Hi Charitha Travels, I would like to enquire about a trip.',
+        '',
+        'Name: ' + data.get('name'),
+        'Phone: ' + data.get('phone'),
+        'Pickup: ' + data.get('pickup'),
+        'Destination: ' + data.get('destination'),
+        'Travel date: ' + data.get('date'),
+        'Trip type: ' + data.get('trip'),
+        'Fare/distance: ' + (data.get('fare') || 'Please suggest'),
+        'Additional details: ' + (data.get('notes') || 'None')
+      ].join('\n');
+      window.open('https://wa.me/919704265640?text=' + encodeURIComponent(message), '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
